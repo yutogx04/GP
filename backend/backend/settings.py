@@ -31,13 +31,24 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-]
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+   
+    'auth_service',
+    'user_profile_service',
+    'establishment_service',
+    'student_service',
+    'internship_offer_service',
+    'candidacy_service',
+    'internship_service',
+    'evaluation_service',
+    'file_storage_service',
+           ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -76,8 +87,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "GP",
-        "USER": "app",
-        "PASSWORD": "",
+        "USER": "root",
+        "PASSWORD": "amar123@",
         "HOST": "localhost",
         "PORT": "3306",
         "DEFAULT_CHARSET": "utf8mb4",
