@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .models import Establishment, Hospital_service, Doctor
+from backend.backend.models import Establishment, Hospital_service, Doctor
 from .serializers import EstablishmentSerializer, HospitalServiceSerializer, DoctorSerializer
 from .permissions import IsAdminOrReadOnly
 

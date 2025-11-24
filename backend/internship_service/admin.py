@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Internship
+from backend.backend.models import Internship
 
 
 @admin.register(Internship)

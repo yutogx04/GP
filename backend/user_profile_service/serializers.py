@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Doyen
+from backend.backend.models import Doyen
 
 
 class DoyenSerializer(serializers.ModelSerializer):

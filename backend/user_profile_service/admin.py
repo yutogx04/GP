@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Doyen
+from backend.backend.models import Doyen
 
 
 @admin.register(Doyen)

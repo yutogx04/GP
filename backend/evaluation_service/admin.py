@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Evaluation
+from backend.backend.models import Evaluation
 
 
 @admin.register(Evaluation)

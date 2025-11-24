@@ -1,6 +1,6 @@
 from django.test import TestCase
-from .models import Establishment, Hospital_service, Doctor
-from user_profile_service.models import Doyen
+from backend.backend.models import Establishment, Hospital_service, Doctor
+from backend.backend.models import Doyen
 
 
 class EstablishmentModelsTest(TestCase):

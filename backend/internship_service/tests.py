@@ -1,8 +1,8 @@
 from django.test import TestCase
-from user_profile_service.models import Doyen
-from establishment_service.models import Establishment, Hospital_service, Doctor
-from student_service.models import Student
-from .models import Internship
+from backend.backend.models import Doyen
+from backend.backend.models import Establishment, Hospital_service, Doctor
+from backend.backend.models import Student
+from backend.backend.models import Internship
 
 
 class InternshipTest(TestCase):

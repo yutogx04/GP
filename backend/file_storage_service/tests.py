@@ -1,7 +1,7 @@
 from django.test import TestCase
-from student_service.models import Student
-from .models import Document
-from user_profile_service.models import Doyen
+from backend.backend.models import Student
+from backend.backend.models import Document
+from backend.backend.models import Doyen
 
 
 class DocumentTest(TestCase):

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Establishment, Hospital_service, Doctor
+from backend.backend.models import Establishment, Hospital_service, Doctor
 
 
 @admin.register(Establishment)

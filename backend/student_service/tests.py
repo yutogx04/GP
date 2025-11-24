@@ -1,6 +1,6 @@
 from django.test import TestCase
-from .models import Student
-from user_profile_service.models import Doyen
+from backend.backend.models import Student
+from backend.backend.models import Doyen
 
 
 class StudentTest(TestCase):

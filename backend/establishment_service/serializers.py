@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Establishment, Hospital_service, Doctor
+from backend.backend.models import Establishment, Hospital_service, Doctor
 
 
 class EstablishmentSerializer(serializers.ModelSerializer):

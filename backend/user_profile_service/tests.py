@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Doyen
+from backend.backend.models import Doyen
 
 
 class DoyenModelTest(TestCase):

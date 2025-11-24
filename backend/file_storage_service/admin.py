@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Document
+from backend.backend.models import Document
 
 
 @admin.register(Document)

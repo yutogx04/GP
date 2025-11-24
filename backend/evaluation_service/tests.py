@@ -1,7 +1,7 @@
 from django.test import TestCase
-from establishment_service.models import Doctor, Hospital_service, Establishment
-from user_profile_service.models import Doyen
-from .models import Evaluation
+from backend.backend.models import Doctor, Hospital_service, Establishment
+from backend.backend.models import Doyen
+from backend.backend.models import Evaluation
 
 
 class EvaluationTest(TestCase):

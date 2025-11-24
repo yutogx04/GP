@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import candidacy
+from backend.backend.models import candidacy
 
 
 class CandidacySerializer(serializers.ModelSerializer):

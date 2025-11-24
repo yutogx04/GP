@@ -1,9 +1,9 @@
 from django.test import TestCase
-from user_profile_service.models import Doyen
-from establishment_service.models import Establishment, Hospital_service
-from student_service.models import Student
-from internship_offer_service.models import Internship_announcement
-from .models import candidacy
+from backend.backend.models import Doyen
+from backend.backend.models import Establishment, Hospital_service
+from backend.backend.models import Student
+from backend.backend.models import Internship_announcement
+from backend.backend.models import candidacy
 
 
 class CandidacyTest(TestCase):

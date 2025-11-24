@@ -1,7 +1,7 @@
 from django.test import TestCase
-from .models import Internship_announcement
-from user_profile_service.models import Doyen
-from establishment_service.models import Establishment, Hospital_service
+from backend.backend.models import Internship_announcement
+from backend.backend.models import Doyen
+from backend.backend.models import Establishment, Hospital_service
 
 
 class AnnouncementTest(TestCase):
