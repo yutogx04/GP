@@ -82,7 +82,7 @@ class Internship(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.RESTRICT)
 
 
-class candidacy(models.Model):
+class Candidacy(models.Model):
     date_of_application = models.DateField(auto_now_add=True)
     status = models.CharField(max_length=50)
     reason_of_refusal = models.TextField(null=True, blank=True)
@@ -90,6 +90,6 @@ class candidacy(models.Model):
     internship_announcement = models.ForeignKey(
         Internship_announcement, on_delete=models.RESTRICT
     )
-    internship = models.oneToOneField(
+    internship = models.OneToOneField(
         Internship, on_delete=models.RESTRICT, null=True, blank=True
     )

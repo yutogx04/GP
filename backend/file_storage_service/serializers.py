@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from backend.backend.models import Document
+from backend.models import Document
 
 
 class DocumentSerializer(serializers.ModelSerializer):

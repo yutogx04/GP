@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from backend.backend.models import Evaluation
+from backend.models import Evaluation
 
 
 class EvaluationSerializer(serializers.ModelSerializer):

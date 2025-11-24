@@ -1,7 +1,6 @@
 from django.contrib import admin
-from backend.backend.models import candidacy
+from backend.models import Candidacy
 
-
-@admin.register(candidacy)
+@admin.register(Candidacy)
 class CandidacyAdmin(admin.ModelAdmin):
     list_display = ('id', 'student', 'status', 'date_of_application')

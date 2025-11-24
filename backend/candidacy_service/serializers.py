@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from backend.backend.models import candidacy
+from backend.models import Candidacy
 
 
 class CandidacySerializer(serializers.ModelSerializer):
     class Meta:
-        model = candidacy
+        model = Candidacy
         fields = '__all__'

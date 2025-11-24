@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from backend.backend.models import Internship
+from backend.models import Internship
 
 
 class InternshipSerializer(serializers.ModelSerializer):

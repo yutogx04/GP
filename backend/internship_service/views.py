@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from backend.backend.models import Internship
+from backend.models import Internship
 from .serializers import InternshipSerializer
 from .permissions import IsAdminOrReadOnly
 

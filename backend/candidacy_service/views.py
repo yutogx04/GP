@@ -1,10 +1,10 @@
 from rest_framework import viewsets
-from backend.backend.models import candidacy
+from backend.models import Candidacy
 from .serializers import CandidacySerializer
 from .permissions import IsAdminOrReadOnly
 
 
 class CandidacyViewSet(viewsets.ModelViewSet):
-    queryset = candidacy.objects.all()
+    queryset = Candidacy.objects.all()
     serializer_class = CandidacySerializer
     permission_classes = [IsAdminOrReadOnly]

@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from backend.backend.models import Evaluation
+from backend.models import Evaluation
 from .serializers import EvaluationSerializer
 from .permissions import IsAdminOrReadOnly
 
