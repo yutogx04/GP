@@ -31,24 +31,24 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework',
-    'backend',
-    'auth_service',
-    'user_profile_service',
-    'establishment_service',
-    'student_service',
-    'internship_offer_service',
-    'candidacy_service',
-    'internship_service',
-    'evaluation_service',
-    'file_storage_service',
-           ]
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "rest_framework",
+    "backend",
+    "auth_service",
+    "doyen_service",
+    "establishment_service",
+    "student_service",
+    "internship_offer_service",
+    "candidacy_service",
+    "internship_service",
+    "evaluation_service",
+    "file_storage_service",
+]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -136,3 +136,4 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
