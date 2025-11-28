@@ -1,10 +1,9 @@
-from django.urls import include, path
-from rest_framework.routers import DefaultRouter
-from .views import DocumentViewSet
+from django.urls import path
+from .views import UploadFileView, FileListView
 
-router = DefaultRouter()
-router.register(r'documents', DocumentViewSet, basename='document')
+app_name = "file_storage_service"
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("upload/", UploadFileView.as_view(), name="upload-file"),
+    path("", FileListView.as_view(), name="list-files"),
 ]

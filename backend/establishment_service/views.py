@@ -1,22 +1,24 @@
-from rest_framework import viewsets
-from backend.models import Establishment, Hospital_service, Doctor
-from .serializers import EstablishmentSerializer, HospitalServiceSerializer, DoctorSerializer
-from .permissions import IsAdminOrReadOnly
+from rest_framework import generics, permissions
+from .models import Establishment, ServiceHospitalier
+from .serializers import EstablishmentSerializer, ServiceHospitalierSerializer
+from auth_service.permissions import IsHospitalAdmin
 
-
-class EstablishmentViewSet(viewsets.ModelViewSet):
+class EstablishmentListCreateView(generics.ListCreateAPIView):
     queryset = Establishment.objects.all()
     serializer_class = EstablishmentSerializer
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated, IsHospitalAdmin]
 
+class EstablishmentDetailView(generics.RetrieveUpdateAPIView):
+    queryset = Establishment.objects.all()
+    serializer_class = EstablishmentSerializer
+    permission_classes = [permissions.IsAuthenticated, IsHospitalAdmin]
 
-class HospitalServiceViewSet(viewsets.ModelViewSet):
-    queryset = Hospital_service.objects.all()
-    serializer_class = HospitalServiceSerializer
-    permission_classes = [IsAdminOrReadOnly]
+class ServiceListCreateView(generics.ListCreateAPIView):
+    queryset = ServiceHospitalier.objects.all()
+    serializer_class = ServiceHospitalierSerializer
+    permission_classes = [permissions.IsAuthenticated, IsHospitalAdmin]
 
-
-class DoctorViewSet(viewsets.ModelViewSet):
-    queryset = Doctor.objects.all()
-    serializer_class = DoctorSerializer
-    permission_classes = [IsAdminOrReadOnly]
+class ServiceDetailView(generics.RetrieveUpdateAPIView):
+    queryset = ServiceHospitalier.objects.all()
+    serializer_class = ServiceHospitalierSerializer
+    permission_classes = [permissions.IsAuthenticated, IsHospitalAdmin]

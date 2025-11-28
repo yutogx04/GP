@@ -1,7 +1,8 @@
 from django.contrib import admin
-from backend.models import Document
+from .models import StoredFile
 
-
-@admin.register(Document)
-class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'student', 'upload_date')
+@admin.register(StoredFile)
+class StoredFileAdmin(admin.ModelAdmin):
+    list_display = ("id", "uploader", "file", "size", "created_at")
+    list_filter = ("created_at", "uploader")
+    search_fields = ("uploader__username", "file")

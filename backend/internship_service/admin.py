@@ -1,7 +1,8 @@
 from django.contrib import admin
-from backend.models import Internship
+from .models import Stage
 
-
-@admin.register(Internship)
-class InternshipAdmin(admin.ModelAdmin):
-    list_display = ('id', 'student', 'doctor', 'status', 'start_date', 'end_date')
+@admin.register(Stage)
+class StageAdmin(admin.ModelAdmin):
+    list_display = ("id", "candidacy", "medecin", "start_date", "end_date", "status")
+    list_filter = ("status",)
+    search_fields = ("candidacy__id", "medecin__email")

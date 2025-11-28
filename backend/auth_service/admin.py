@@ -1,16 +1,26 @@
 from django.contrib import admin
-from django.contrib.auth.models import User
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth import get_user_model
+from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
+from django.utils.translation import gettext_lazy as _
 
-
-# Ensure we don't try to register User twice (Django's auth app may already
-# register it). If it's registered, unregister first.
-try:
-    admin.site.unregister(User)
-except admin.sites.NotRegistered:
-    pass
-
+User = get_user_model()
 
 @admin.register(User)
-class DjangoUserAdmin(BaseUserAdmin):
-    list_display = ('id', 'username', 'email', 'is_staff', 'is_active')
+class UserAdmin(DjangoUserAdmin):
+    model = User
+    list_display = ("email", "first_name", "last_name", "role", "is_staff", "is_active", "email_verified")
+    list_filter = ("role", "is_staff", "is_active", "email_verified")
+    fieldsets = (
+        (None, {"fields": ("email", "password")}),
+        (_("Personal info"), {"fields": ("first_name", "last_name")}),
+        (_("Permissions"), {"fields": ("role", "is_staff", "is_active", "is_superuser", "groups", "user_permissions")}),
+        (_("Important dates"), {"fields": ("last_login", "date_joined")}),
+    )
+    add_fieldsets = (
+        (None, {
+            "classes": ("wide",),
+            "fields": ("email", "password1", "password2"),
+        }),
+    )
+    search_fields = ("email", "first_name", "last_name")
+    ordering = ("email",)

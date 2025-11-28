@@ -1,10 +1,12 @@
-from django.urls import include, path
-from rest_framework.routers import DefaultRouter
-from .views import InternshipViewSet
+from django.urls import path
+from .views import CreateStageView, StudentStagesListView, StageDetailView, FinishStageView, CancelStageView
 
-router = DefaultRouter()
-router.register(r'internships', InternshipViewSet, basename='internship')
+app_name = "internship_service"
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("create/", CreateStageView.as_view(), name="create-stage"),
+    path("me/", StudentStagesListView.as_view(), name="student-stages"),
+    path("<int:pk>/", StageDetailView.as_view(), name="stage-detail"),
+    path("<int:pk>/finish/", FinishStageView.as_view(), name="stage-finish"),
+    path("<int:pk>/cancel/", CancelStageView.as_view(), name="stage-cancel"),
 ]

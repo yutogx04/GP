@@ -1,8 +1,14 @@
 from rest_framework import serializers
-from backend.models import Evaluation
+from .models import Evaluation
 
-
-class EvaluationSerializer(serializers.ModelSerializer):
+class EvaluationCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Evaluation
-        fields = '__all__'
+        fields = ("id", "stage", "note_competences", "note_assiduite", "note_comportement", "commentaire")
+        read_only_fields = ("id",)
+
+class EvaluationDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Evaluation
+        fields = "__all__"
+        read_only_fields = ("id", "stage", "medecin", "date_evaluation", "pdf_report")

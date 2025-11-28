@@ -1,10 +1,10 @@
-from django.urls import include, path
-from rest_framework.routers import DefaultRouter
-from .views import CandidacyViewSet
+from django.urls import path
+from .views import ApplyToOfferView, MyCandidaciesListView, OfferApplicationsListView
 
-router = DefaultRouter()
-router.register(r'candidacies', CandidacyViewSet, basename='candidacy')
+app_name = "candidacy_service"
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("apply/", ApplyToOfferView.as_view(), name="apply"),
+    path("me/", MyCandidaciesListView.as_view(), name="my-candidacies"),
+    path("offers/<int:offer_pk>/applications/", OfferApplicationsListView.as_view(), name="offer-applications"),
 ]

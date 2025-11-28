@@ -1,10 +1,10 @@
-from django.urls import include, path
-from rest_framework.routers import DefaultRouter
-from .views import DoyenViewSet
+from django.urls import path
+from .views import MyProfileView, UploadPieceView, ListMyPiecesView
 
-router = DefaultRouter()
-router.register(r'doyens', DoyenViewSet, basename='doyen')
+app_name = "user_profile_service"
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("me/", MyProfileView.as_view(), name="my-profile"),
+    path("pieces/upload/", UploadPieceView.as_view(), name="upload-piece"),
+    path("pieces/", ListMyPiecesView.as_view(), name="list-pieces"),
 ]

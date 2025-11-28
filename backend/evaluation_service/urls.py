@@ -1,10 +1,10 @@
-from django.urls import include, path
-from rest_framework.routers import DefaultRouter
-from .views import EvaluationViewSet
+from django.urls import path
+from .views import CreateEvaluationView, EvaluationDetailView, EvaluationPdfView
 
-router = DefaultRouter()
-router.register(r'evaluations', EvaluationViewSet, basename='evaluation')
+app_name = "evaluation_service"
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("create/", CreateEvaluationView.as_view(), name="create-evaluation"),
+    path("<int:pk>/", EvaluationDetailView.as_view(), name="evaluation-detail"),
+    path("<int:pk>/pdf/", EvaluationPdfView.as_view(), name="evaluation-pdf"),
 ]

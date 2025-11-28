@@ -1,10 +1,8 @@
-from django.urls import include, path
-from rest_framework.routers import DefaultRouter
-from .views import DoyenViewSet
+from django.urls import path
+from .views import AssignmentOverrideCreateView
 
-router = DefaultRouter()
-router.register(r'doyens', DoyenViewSet, basename='doyen')
+app_name = "doyen_service"
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("overrides/", AssignmentOverrideCreateView.as_view(), name="assignment-override"),
 ]

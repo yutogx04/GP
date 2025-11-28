@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from backend.models import Doyen
+from .models import AssignmentOverride
 
-
-class DoyenSerializer(serializers.ModelSerializer):
+class AssignmentOverrideSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Doyen
-        fields = '__all__'
+        model = AssignmentOverride
+        fields = ("id", "performed_by", "candidacy_id", "note", "created_at")
+        read_only_fields = ("performed_by", "created_at")

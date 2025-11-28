@@ -1,20 +1,15 @@
 from rest_framework import serializers
-from backend.models import Establishment, Hospital_service, Doctor
-
+from .models import Establishment, ServiceHospitalier
 
 class EstablishmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Establishment
-        fields = '__all__'
+        fields = ("id", "name", "address", "city", "phone", "contact_email")
 
+class ServiceHospitalierSerializer(serializers.ModelSerializer):
+    establishment = EstablishmentSerializer(read_only=True)
+    establishment_id = serializers.PrimaryKeyRelatedField(queryset=Establishment.objects.all(), source="establishment", write_only=True)
 
-class HospitalServiceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Hospital_service
-        fields = '__all__'
-
-
-class DoctorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Doctor
-        fields = '__all__'
+        model = ServiceHospitalier
+        fields = ("id", "establishment", "establishment_id", "name", "description", "capacite_accueil")

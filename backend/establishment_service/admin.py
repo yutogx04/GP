@@ -1,17 +1,12 @@
 from django.contrib import admin
-from backend.models import Establishment, Hospital_service, Doctor
-
+from .models import Establishment, ServiceHospitalier
 
 @admin.register(Establishment)
 class EstablishmentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'city', 'email')
+    list_display = ("name", "city", "contact_email")
+    filter_horizontal = ("admins",)
 
-
-@admin.register(Hospital_service)
-class HospitalServiceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'establishment', 'capacity')
-
-
-@admin.register(Doctor)
-class DoctorAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'prenom', 'specialty', 'email', 'is_service_head')
+@admin.register(ServiceHospitalier)
+class ServiceHospitalierAdmin(admin.ModelAdmin):
+    list_display = ("name", "establishment", "capacite_accueil")
+    list_filter = ("establishment",)

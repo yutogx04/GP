@@ -1,6 +1,8 @@
 from django.apps import AppConfig
 
-
 class UserProfileServiceConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'user_profile_service'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "user_profile_service"
+
+    def ready(self):
+        from . import signals  
