@@ -23,13 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 if not SECRET_KEY:
-    raise RuntimeError("SECRET_KEY environment variable is not set. Please set it for Django to run securely.")
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+    raise ValueError("SECRET_KEY environment variable must be set and should not be hardcoded.")
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = []
 
@@ -46,7 +43,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "backend",
     "auth_service",
-    "doyen_service",
+    'doyen_service',
     "establishment_service",
     "student_service",
     "internship_offer_service",
@@ -54,6 +51,8 @@ INSTALLED_APPS = [
     "internship_service",
     "evaluation_service",
     "file_storage_service",
+    "corsheaders",
+    'user_profile_service',
 ]
 
 MIDDLEWARE = [
@@ -91,14 +90,9 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "GP",
-        "USER": "root",
-        "PASSWORD": "amar123@",
-        "HOST": "localhost",
-        "PORT": "3306",
-        "DEFAULT_CHARSET": "utf8mb4",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

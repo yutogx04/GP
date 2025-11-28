@@ -9,6 +9,9 @@ class AssignmentOverride(models.Model):
     candidacy_id = models.IntegerField()  # store candidacy id for audit
     note = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ["-created_at"]
+        app_label = 'doyen_service'
 
     def __str__(self):
         return f"Override by {self.performed_by} on candidacy {self.candidacy_id}"
