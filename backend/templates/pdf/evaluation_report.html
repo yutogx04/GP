@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #1e293b;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #0ea5e9;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #0ea5e9;
+        }
+
+        .logo span {
+            color: #1e293b;
+        }
+
+        h1 {
+            font-size: 20px;
+            color: #1e293b;
+            margin: 20px 0 10px;
+        }
+
+        h2 {
+            font-size: 14px;
+            color: #475569;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin: 25px 0 15px;
+        }
+
+        .info-grid {
+            display: table;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            display: table-row;
+        }
+
+        .info-label {
+            display: table-cell;
+            width: 35%;
+            padding: 6px 10px;
+            background: #f8fafc;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+        }
+
+        .info-value {
+            display: table-cell;
+            padding: 6px 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .grades-table th,
+        .grades-table td {
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .grades-table th {
+            background: #0ea5e9;
+            color: white;
+            font-weight: 600;
+        }
+
+        .grades-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .grade-cell {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .final-grade {
+            background: #0ea5e9 !important;
+            color: white;
+        }
+
+        .mention {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .mention-excellent {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .mention-good {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .mention-satisfactory {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .mention-pass {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .mention-fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .section-title {
+            font-weight: 600;
+            color: #0ea5e9;
+            margin-bottom: 10px;
+        }
+
+        .signature-section {
+            margin-top: 40px;
+            display: table;
+            width: 100%;
+        }
+
+        .signature-box {
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .signature-line {
+            border-top: 1px solid #1e293b;
+            margin-top: 50px;
+            padding-top: 5px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 10px;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">Med<span>Intern</span></div>
+        <h1>Internship Evaluation Report</h1>
+        <p>Academic Year {{ evaluation.internship.offer.start_date|date:"Y" }}-{{
+            evaluation.internship.offer.end_date|date:"Y" }}</p>
+    </div>
+
+    <h2>📋 Internship Information</h2>
+    <div class="info-grid">
+        <div class="info-row">
+            <div class="info-label">Internship</div>
+            <div class="info-value">{{ evaluation.internship.offer.title }}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Hospital</div>
+            <div class="info-value">{{ evaluation.internship.offer.hospital.name }}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Department</div>
+            <div class="info-value">{{ evaluation.internship.offer.department.name }}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Period</div>
+            <div class="info-value">{{ evaluation.internship.start_date|date:"d/m/Y" }} - {{
+                evaluation.internship.end_date|date:"d/m/Y" }}</div>
+        </div>
+    </div>
+
+    <h2>👤 Student Information</h2>
+    <div class="info-grid">
+        <div class="info-row">
+            <div class="info-label">Full Name</div>
+            <div class="info-value">{{ evaluation.internship.student.user.full_name }}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Student Number</div>
+            <div class="info-value">{{ evaluation.internship.student.student_number }}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Study Level</div>
+            <div class="info-value">{{ evaluation.internship.student.get_niveau_etude_display }}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Specialty</div>
+            <div class="info-value">{{ evaluation.internship.student.get_specialite_display }}</div>
+        </div>
+    </div>
+
+    <h2>📊 Evaluation Grades</h2>
+    <table class="grades-table">
+        <thead>
+            <tr>
+                <th>Criteria</th>
+                <th style="width: 100px; text-align: center;">Grade (/20)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Technical Skills</td>
+                <td class="grade-cell">{{ evaluation.technical_skills|default:"--" }}</td>
+            </tr>
+            <tr>
+                <td>Attendance & Punctuality</td>
+                <td class="grade-cell">{{ evaluation.attendance_punctuality|default:"--" }}</td>
+            </tr>
+            <tr>
+                <td>Patient Relations</td>
+                <td class="grade-cell">{{ evaluation.patient_relation|default:"--" }}</td>
+            </tr>
+            <tr>
+                <td>Teamwork</td>
+                <td class="grade-cell">{{ evaluation.teamwork|default:"--" }}</td>
+            </tr>
+            <tr>
+                <td>Initiative & Autonomy</td>
+                <td class="grade-cell">{{ evaluation.initiative_autonomy|default:"--" }}</td>
+            </tr>
+            <tr>
+                <td>Theoretical Knowledge</td>
+                <td class="grade-cell">{{ evaluation.theoretical_knowledge|default:"--" }}</td>
+            </tr>
+            <tr class="final-grade">
+                <td><strong>Final Grade</strong></td>
+                <td class="grade-cell"><strong>{{ evaluation.final_grade|floatformat:2|default:"--" }}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="text-align: center; margin: 15px 0;">
+        <span
+            class="mention {% if evaluation.final_grade >= 16 %}mention-excellent{% elif evaluation.final_grade >= 14 %}mention-good{% elif evaluation.final_grade >= 12 %}mention-satisfactory{% elif evaluation.final_grade >= 10 %}mention-pass{% else %}mention-fail{% endif %}">
+            {{ evaluation.get_mention }}
+        </span>
+    </p>
+
+    {% if evaluation.overall_appreciation %}
+    <h2>💬 Overall Appreciation</h2>
+    <div class="section">
+        {{ evaluation.overall_appreciation }}
+    </div>
+    {% endif %}
+
+    {% if evaluation.strengths %}
+    <h2>✅ Strengths</h2>
+    <div class="section">
+        <ul>
+            {% for strength in evaluation.strengths %}
+            <li>{{ strength }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if evaluation.areas_for_improvement %}
+    <h2>📈 Areas for Improvement</h2>
+    <div class="section">
+        <ul>
+            {% for area in evaluation.areas_for_improvement %}
+            <li>{{ area }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if evaluation.recommendations %}
+    <h2>📝 Recommendations</h2>
+    <div class="section">
+        {{ evaluation.recommendations }}
+    </div>
+    {% endif %}
+
+    <h2>✍️ Signatures</h2>
+    <div class="signature-section">
+        <div class="signature-box">
+            <p><strong>Supervisor</strong></p>
+            <p>{{ evaluation.supervisor.full_name }}</p>
+            <div class="signature-line">
+                {% if evaluation.supervisor_signature %}✓ Signed{% else %}Pending{% endif %}
+            </div>
+        </div>
+        <div class="signature-box">
+            <p><strong>Student</strong></p>
+            <p>{{ evaluation.internship.student.user.full_name }}</p>
+            <div class="signature-line">
+                {% if evaluation.student_signature %}✓ Signed{% else %}Pending{% endif %}
+            </div>
+        </div>
+        <div class="signature-box">
+            <p><strong>Administration</strong></p>
+            <p>{% if evaluation.validated_by %}{{ evaluation.validated_by.full_name }}{% else %}--{% endif %}</p>
+            <div class="signature-line">
+                {% if evaluation.admin_signature %}✓ Validated{% else %}Pending{% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Generated on {% now "d/m/Y H:i" %} | MedIntern Platform</p>
+        <p>This document is an official evaluation report from the MedIntern internship management system.</p>
+    </div>
+</body>
+
+</html>

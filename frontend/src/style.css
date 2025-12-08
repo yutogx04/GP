@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Professional Medical Palette - Clean & Trustworthy */
+  --primary: #0284c7;
+  /* Sky 600 */
+  --primary-dark: #0369a1;
+  /* Sky 700 */
+  --primary-light: #e0f2fe;
+  /* Sky 100 */
+
+  --secondary: #0f766e;
+  /* Teal 700 */
+  --accent: #f59e0b;
+  /* Amber 500 */
+
+  --bg-body: #f8fafc;
+  /* Slate 50 */
+  --bg-surface: #ffffff;
+
+  --text-main: #0f172a;
+  /* Slate 900 */
+  --text-muted: #64748b;
+  /* Slate 500 */
+
+  --border: #e2e8f0;
+  /* Slate 200 */
+}
+
+.dark {
+  --bg-body: #0f172a;
+  /* Slate 900 */
+  --bg-surface: #1e293b;
+  /* Slate 800 */
+
+  --text-main: #f1f5f9;
+  /* Slate 100 */
+  --text-muted: #94a3b8;
+  /* Slate 400 */
+
+  --border: #334155;
+  /* Slate 700 */
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Modern Card Style - Clean, no heavy glass effect */
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  /* 12px */
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transform: translateY(-2px);
+}
+
+/* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  background-color: transparent;
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  background-color: var(--bg-body);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Form Elements */
+.input-field {
+  @apply w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200;
+}
+
+/* Navigation Link */
+.nav-link {
+  @apply text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 font-medium transition-colors duration-200;
+}
+
+.nav-link.router-link-active {
+  @apply text-sky-600 dark:text-sky-400;
+}
+
+/* Animations */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

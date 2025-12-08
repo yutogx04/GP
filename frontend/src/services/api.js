@@ -1,61 +1,67 @@
 import axios from 'axios'
-let refreshSubscribers = []
-let isRefreshing = false
-
-
-function onRrefreshed(token) {
-for (const cb of refreshSubscribers) {
-	cb(token)
-}
-refreshSubscribers = []
-}
-
-
-function addRefreshSubscriber(cb) {
-refreshSubscribers.push(cb)
-}
-
-
-api.interceptors.response.use(
-res => res,
-async err => {
-const auth = useAuthStore()
-const original = err.config
-if (err.response?.status === 401 && !original._retry) {
-original._retry = true
-if (isRefreshing) {
-return new Promise((resolve) => {
-addRefreshSubscriber((token) => {
-original.headers.Authorization = `Bearer ${token}`
-resolve(api(original))
-})
-})
-}
-isRefreshing = true
-try {
-const resp = await axios.post(`${api.defaults.baseURL.replace('/api', '')}/api/auth/token/refresh/`, { refresh: auth.refreshToken })
-const newAccess = resp.data.access
-auth.setAccessToken(newAccess)
-onRrefreshed(newAccess)
-isRefreshing = false
-original.headers.Authorization = `Bearer ${newAccess}`
-return api(original)
-} catch (e) {
-isRefreshing = false
-auth.logout()
-throw e
-}
-}
-throw err
-}
-)
-
+import { useAuthStore } from '../stores/auth'
 
 const api = axios.create({
-	baseURL: 'http://localhost:8000/api/',
-	headers: {
-		'Content-Type': 'application/json',
-	},
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  timeout: 30000,
 })
+
+// Request interceptor
+api.interceptors.request.use(
+  (config) => {
+    const authStore = useAuthStore()
+    const token = authStore.accessToken
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
+
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
+
+// Response interceptor
+api.interceptors.response.use(
+  (response) => {
+    return response
+  },
+  async (error) => {
+    const originalRequest = error.config
+    const authStore = useAuthStore()
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true
+
+      try {
+        const refreshToken = authStore.refreshToken
+        if (refreshToken) {
+          const response = await axios.post(
+            `${api.defaults.baseURL}/auth/token/refresh/`,
+            { refresh: refreshToken }
+          )
+
+          const newAccessToken = response.data.access
+          authStore.setAccessToken(newAccessToken)
+          originalRequest.headers.Authorization = `Bearer ${newAccessToken}`
+          return api(originalRequest)
+        }
+      } catch (refreshError) {
+        authStore.logout()
+        // Use router for navigation instead of hard reload
+        const router = require('./router').default
+        router.push({ name: 'login', query: { redirect: window.location.pathname } })
+        return Promise.reject(refreshError)
+      }
+    }
+
+    return Promise.reject(error)
+  }
+)
 
 export default api

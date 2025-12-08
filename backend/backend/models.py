@@ -28,7 +28,6 @@ class Doctor(models.Model):
     specialty = models.CharField(max_length=100)
     telephone = models.CharField(max_length=20)
     email = models.EmailField(unique=True)
-    # TO-DO: fix
     is_service_head = models.BooleanField(default=False)
     service = models.ForeignKey(Hospital_service, on_delete=models.RESTRICT)
 

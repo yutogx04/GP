@@ -1,0 +1,39 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<h1>Application Status Update</h1>
+<p>Hello {{ user.first_name }},</p>
+<p>Your application status has been updated.</p>
+
+<div class="info-box">
+    <p style="margin: 0;"><strong>Internship:</strong> {{ application.offer.title }}</p>
+    <p style="margin: 8px 0 0 0;"><strong>Hospital:</strong> {{ application.offer.hospital.name }}</p>
+    <p style="margin: 8px 0 0 0;"><strong>Department:</strong> {{ application.offer.department.name }}</p>
+</div>
+
+<div style="text-align: center; margin: 30px 0;">
+    <span class="status-badge status-{{ application.status }}">
+        {% if application.status == 'accepted' %}
+        ✓ Accepted
+        {% elif application.status == 'rejected' %}
+        ✗ Not Selected
+        {% elif application.status == 'pending' %}
+        ⏳ Pending Review
+        {% else %}
+        {{ application.status|title }}
+        {% endif %}
+    </span>
+</div>
+
+{% if application.status == 'accepted' %}
+<p>Congratulations! Your application has been accepted. You will receive further instructions about your internship
+    start date and requirements.</p>
+{% elif application.status == 'rejected' %}
+<p>We regret to inform you that your application was not selected. Don't be discouraged – there are many other
+    opportunities available on MedIntern.</p>
+{% endif %}
+
+<div style="text-align: center;">
+    <a href="{{ frontend_url }}/applications" class="button">View My Applications</a>
+</div>
+{% endblock %}

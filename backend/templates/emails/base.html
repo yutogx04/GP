@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f5f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0ea5e9;
+        }
+        .logo span {
+            color: #1e293b;
+        }
+        h1 {
+            color: #1e293b;
+            font-size: 24px;
+            margin: 0 0 20px 0;
+        }
+        p {
+            margin: 0 0 16px 0;
+            color: #475569;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+        .button:hover {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        .info-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 16px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .status-accepted { background: #dcfce7; color: #166534; }
+        .status-rejected { background: #fee2e2; color: #991b1b; }
+        .status-pending { background: #fef3c7; color: #92400e; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div class="logo">Med<span>Intern</span></div>
+            </div>
+            {% block content %}{% endblock %}
+            <div class="footer">
+                <p>&copy; 2025 MedIntern. All rights reserved.</p>
+                <p>This is an automated message. Please do not reply.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<h1>{{ notification.title }}</h1>
+<p>Hello {{ user.first_name }},</p>
+
+<div class="info-box">
+    <p style="margin: 0;">{{ notification.message }}</p>
+</div>
+
+{% if notification.link %}
+<div style="text-align: center;">
+    <a href="{{ frontend_url }}{{ notification.link }}" class="button">View Details</a>
+</div>
+{% endif %}
+
+<p>You can manage your notification preferences in your account settings.</p>
+{% endblock %}

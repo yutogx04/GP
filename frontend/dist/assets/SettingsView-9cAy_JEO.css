@@ -1,0 +1,1 @@
+.btn-spinner[data-v-fa13cceb]{width:16px;height:16px;border:2px solid transparent;border-left:2px solid currentColor;border-radius:50%;display:inline-block;animation:spin-fa13cceb 1s linear infinite}@keyframes spin-fa13cceb{to{transform:rotate(360deg)}}

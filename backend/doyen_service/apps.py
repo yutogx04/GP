@@ -1,6 +1,0 @@
-from django.apps import AppConfig
-
-
-class UserProfileServiceConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'doyen_service'
