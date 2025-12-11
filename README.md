@@ -139,11 +139,6 @@ This application is an **internal platform**. Users are not created via public s
     - `Faculty Admin`: Validates offers and oversees all students.
     - `Encadrant` (Supervisor): Supervises assigned interns (doctors/professors).
 
-### Demo Credentials (Development Only)
-The login screen (`LoginView.vue`) contains a "Demo Accounts" section for quick testing:
-- **Student**: Login with Matricule `123456789012`
-- **Hospital Admin**: Login with Email `admin@example.com`
-
 ---
 
 ## 🔄 Core Workflows
@@ -172,7 +167,6 @@ The login screen (`LoginView.vue`) contains a "Demo Accounts" section for quick 
 ### How to check if everything is going well
 
 1.  **System Status Check**:
-    Run the generic system check built into Django:
     ```bash
     python manage.py check
     ```
@@ -200,3 +194,4 @@ The login screen (`LoginView.vue`) contains a "Demo Accounts" section for quick 
 | **Apply DB Changes** | `python manage.py migrate` |
 | **Create Admin** | `python manage.py createsuperuser` |
 | **Build Frontend** | `npm run build` |
+
